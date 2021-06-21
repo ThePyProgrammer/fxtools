@@ -3,6 +3,7 @@ package com.thepyprogrammer.fxtools
 import javafx.beans.property.DoubleProperty
 import javafx.beans.property.SimpleDoubleProperty
 import javafx.geometry.Point2D
+import kotlin.math.sqrt
 
 
 data class Point(
@@ -10,11 +11,11 @@ data class Point(
     var yProperty: DoubleProperty = SimpleDoubleProperty(0.0)
 ) : Cloneable, Comparable<Any?> {
 
-    private var x: Double
+    var x: Double
         get() = xProperty.get()
         set(other) = xProperty.set(other)
 
-    private var y: Double
+    var y: Double
         get() = yProperty.get()
         set(other) = yProperty.set(other)
 
@@ -29,7 +30,7 @@ data class Point(
         this.y = y
     }
 
-    fun set(point: Point2D) {
+    infix fun set(point: Point2D) {
         this.x = point.x
         this.y = point.y
     }
@@ -46,28 +47,28 @@ data class Point(
         return copy()
     }
 
-    fun bindX(xProperty: DoubleProperty) {
+    infix fun bindX(xProperty: DoubleProperty) {
         this.xProperty.bind(xProperty)
     }
 
-    fun bindXBidirectional(xProperty: DoubleProperty) {
+    infix fun bindXBidirectional(xProperty: DoubleProperty) {
         this.xProperty.bindBidirectional(xProperty)
     }
 
-    fun bindY(yProperty: DoubleProperty) {
+    infix fun bindY(yProperty: DoubleProperty) {
         this.yProperty.bind(yProperty)
     }
 
-    fun bindYBidirectional(yProperty: DoubleProperty) {
+    infix fun bindYBidirectional(yProperty: DoubleProperty) {
         this.yProperty.bindBidirectional(yProperty)
     }
 
-    fun bind(p: Point) {
+    infix fun bind(p: Point) {
         bindX(p.xProperty)
         bindY(p.yProperty)
     }
 
-    fun bindBidirectional(p: Point) {
+    infix fun bindBidirectional(p: Point) {
         bindXBidirectional(p.xProperty)
         bindYBidirectional(p.yProperty)
     }
@@ -76,26 +77,64 @@ data class Point(
         return Point2D(x, y)
     }
 
-    override operator fun compareTo(other: Any?): Int {
+    override infix operator fun compareTo(other: Any?): Int {
         return if (other is Point2D) compareTo(other) else if (other is Point) compareTo(other) else 0
     }
 
-    operator fun compareTo(p: Point): Int {
+    infix operator fun compareTo(p: Point): Int {
         return if (x != p.x) (x - p.x).toInt() else (y - p.y).toInt()
     }
 
-    operator fun compareTo(p: Point2D): Int {
+    infix operator fun compareTo(p: Point2D): Int {
         return if (x != p.x) (x - p.x).toInt() else (x - p.y).toInt()
     }
 
-    fun fromOrigin(p: Point): Point {
+    infix fun fromOrigin(p: Point): Point {
         return Point(x - p.x, y - p.y)
     }
 
-    val hypotenuse: Double
-        get() = Math.sqrt(x * x + y * y)
+    private val hypotenuse: Double
+        get() = sqrt(x * x + y * y)
 
-    fun hypotenuseFrom(p: Point): Double {
+    infix fun hypotenuseFrom(p: Point): Double {
         return fromOrigin(p).hypotenuse
     }
+
+    fun sumOfProperties(): DoubleProperty {
+        return xProperty + yProperty
+    }
+
+    infix operator fun plus(p: Point): Point = Point(
+        xProperty + p.xProperty,
+        yProperty + p.yProperty
+    )
+
+    fun plus(xProperty: DoubleProperty, yProperty: DoubleProperty): Point = Point(
+        xProperty + this.xProperty,
+        yProperty + this.yProperty
+    )
+
+    infix operator fun times(p: Point): DoubleProperty =
+        scale(p).sumOfProperties()
+
+    infix operator fun times(scalingProperty: DoubleProperty): DoubleProperty =
+        (xProperty * scalingProperty) + (yProperty * scalingProperty)
+
+    infix fun scaleX(scalingProperty: DoubleProperty) =
+        Point((xProperty * scalingProperty), (yProperty))
+
+    infix fun scaleY(scalingProperty: DoubleProperty) =
+        Point((xProperty), (yProperty * scalingProperty))
+
+    fun scale(scalingXProperty: DoubleProperty, scalingYProperty: DoubleProperty): Point =
+        this scaleX scalingXProperty scaleY scalingYProperty
+
+    infix fun scale(scalingProperty: DoubleProperty): Point = scale(scalingProperty, scalingProperty)
+
+    infix fun scale(p: Point): Point = scale(p.xProperty, p.yProperty)
+
+    infix operator fun minus(p: Point): Point = Point(
+        xProperty - p.xProperty,
+        yProperty - p.yProperty
+        )
 }
