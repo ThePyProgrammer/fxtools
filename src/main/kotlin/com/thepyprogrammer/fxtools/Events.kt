@@ -2,6 +2,6 @@ package com.thepyprogrammer.fxtools
 
 import javafx.scene.input.MouseEvent
 
-val MouseEvent.point: Point
+val MouseEvent.screenPoint: Point
     get() = Point(screenX, screenY)
 

@@ -2,7 +2,6 @@ package com.thepyprogrammer.fxtools
 
 import com.thepyprogrammer.fxtools.resizable.addResizeListener
 import javafx.collections.ListChangeListener
-import javafx.event.EventHandler
 import javafx.geometry.Point2D
 import javafx.geometry.Pos
 import javafx.geometry.Rectangle2D
@@ -142,7 +141,7 @@ class DraggableTab(text: String? = "") : Tab() {
             label.setOnMouseDragged {
                 width = label.width + 10
                 height = label.height + 10
-                point = it.point
+                point = it.screenPoint
                 show()
                 tabPanes.add(tabPane)
                 getInsertData(point).apply {
@@ -165,7 +164,7 @@ class DraggableTab(text: String? = "") : Tab() {
             label.setOnMouseReleased EventHandler@ {
                 listOf(markerStage, this).hide()
                 if(!it.isStillSincePress) {
-                    val pt = it.point
+                    val pt = it.screenPoint
                     tabPane.apply oldTabPane@ {
                         val oldIndex = tabs.indexOf(this@DraggableTab)
                         tabPanes.add(this)
