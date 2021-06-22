@@ -1,4 +1,4 @@
-package com.thepyprogrammer.fxtools
+package com.thepyprogrammer.fxtools.point
 
 import javafx.geometry.Rectangle2D
 
