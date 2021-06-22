@@ -1,5 +1,6 @@
-package com.thepyprogrammer.fxtools
+package com.thepyprogrammer.fxtools.zoomable
 
+import com.thepyprogrammer.fxtools.methods.centeredNode
 import javafx.beans.property.ObjectProperty
 import javafx.beans.property.SimpleObjectProperty
 import javafx.geometry.Point2D
