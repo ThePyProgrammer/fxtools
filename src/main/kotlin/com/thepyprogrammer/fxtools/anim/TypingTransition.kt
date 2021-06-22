@@ -1,4 +1,4 @@
-package com.thepyprogrammer.fxtools
+package com.thepyprogrammer.fxtools.anim
 
 import javafx.animation.Interpolator
 import javafx.animation.Transition
@@ -18,7 +18,7 @@ class TypingTransition(var label: Label, var text: String, var speed: Double = 5
 
     init {
         label.text = ""
-        cycleDuration = Duration.millis((50 * text.length).toDouble())
+        cycleDuration = Duration.millis(speed * text.length)
         interpolator = Interpolator.LINEAR
     }
 }
