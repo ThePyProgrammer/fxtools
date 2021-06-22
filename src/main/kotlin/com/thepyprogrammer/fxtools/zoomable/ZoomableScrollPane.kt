@@ -1,6 +1,7 @@
 package com.thepyprogrammer.fxtools.zoomable
 
 import com.thepyprogrammer.fxtools.methods.centeredNode
+import com.thepyprogrammer.fxtools.methods.point
 import javafx.beans.property.ObjectProperty
 import javafx.beans.property.SimpleObjectProperty
 import javafx.geometry.Point2D
@@ -26,11 +27,11 @@ class ZoomableScrollPane(
             updateScale()
         }
 
-    fun outerNode(node: Node) =
+    private fun outerNode(node: Node) =
         node.centeredNode.apply {
             setOnScroll { e ->
                 e.consume()
-                onScroll(e.textDeltaY, Point2D(e.x, e.y))
+                onScroll(e.textDeltaY, e.point.toPoint2d())
             }
         }
 
@@ -88,13 +89,6 @@ class ZoomableScrollPane(
 
     constructor(target: Node): this() {
         this.target = target
-    }
-
-    class NodeProperty: SimpleObjectProperty<Node>() {
-        override fun set(target: Node) {
-            super.set(target)
-
-        }
     }
 
 
