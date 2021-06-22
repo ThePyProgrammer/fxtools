@@ -43,4 +43,14 @@ val GestureEvent.scenePoint: Point
     get() = Point(sceneX, sceneY)
 
 
+val ScrollEvent.screenPoint: Point
+    get() = Point(screenX, screenY)
+
+val ScrollEvent.point: Point
+    get() = Point(x, y)
+
+val ScrollEvent.scenePoint: Point
+    get() = Point(sceneX, sceneY)
+
+
 
