@@ -1,4 +1,4 @@
-package com.thepyprogrammer.fxtools;
+package com.thepyprogrammer.fxtools.io;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
