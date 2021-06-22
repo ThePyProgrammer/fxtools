@@ -1,7 +1,5 @@
-package com.thepyprogrammer.fxtools
+package com.thepyprogrammer.fxtools.angles
 
-import javafx.beans.value.ChangeListener
-import javafx.scene.Node
 import javafx.scene.layout.Pane
 import javafx.scene.paint.*
 

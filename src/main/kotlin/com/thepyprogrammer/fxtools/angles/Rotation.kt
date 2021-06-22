@@ -1,4 +1,4 @@
-package com.thepyprogrammer.fxtools
+package com.thepyprogrammer.fxtools.angles
 
 import javafx.beans.property.DoubleProperty
 import javafx.beans.property.SimpleDoubleProperty
