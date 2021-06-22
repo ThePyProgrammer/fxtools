@@ -1,4 +1,4 @@
-package com.thepyprogrammer.fxtools
+package com.thepyprogrammer.fxtools.autocomplete
 
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
