@@ -1,5 +1,6 @@
-package com.thepyprogrammer.fxtools
+package com.thepyprogrammer.fxtools.draggable
 
+import com.thepyprogrammer.fxtools.given
 import com.thepyprogrammer.fxtools.resizable.ResizeMode
 import javafx.event.EventHandler
 import javafx.scene.Cursor

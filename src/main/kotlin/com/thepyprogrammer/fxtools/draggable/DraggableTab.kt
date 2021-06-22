@@ -1,5 +1,6 @@
-package com.thepyprogrammer.fxtools
+package com.thepyprogrammer.fxtools.draggable
 
+import com.thepyprogrammer.fxtools.*
 import com.thepyprogrammer.fxtools.resizable.addResizeListener
 import javafx.collections.ListChangeListener
 import javafx.geometry.Point2D
