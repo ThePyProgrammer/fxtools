@@ -1,5 +1,4 @@
-package com.thepyprogrammer.fxtools
-
+package com.thepyprogrammer.fxtools.util
 
 fun Boolean.toInt() = if(this) 1 else 0
 
