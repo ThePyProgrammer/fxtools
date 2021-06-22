@@ -1,6 +1,5 @@
-package com.thepyprogrammer.fxtools
+package com.thepyprogrammer.fxtools.methods
 
-import javafx.geometry.Point2D
 import javafx.geometry.Pos
 import javafx.geometry.Rectangle2D
 import javafx.scene.Node

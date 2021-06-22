@@ -1,5 +1,6 @@
-package com.thepyprogrammer.fxtools
+package com.thepyprogrammer.fxtools.methods
 
+import com.thepyprogrammer.fxtools.point.Point
 import javafx.application.Application
 import javafx.geometry.Rectangle2D
 import javafx.stage.Screen
@@ -13,7 +14,6 @@ fun Application.fullScreen(stage: Stage) {
     stage.y = bounds.minY
     stage.width = bounds.width
     stage.height = bounds.height
-
 }
 
 fun List<Stage>.hide() {

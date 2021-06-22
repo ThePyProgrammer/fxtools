@@ -1,5 +1,6 @@
-package com.thepyprogrammer.fxtools
+package com.thepyprogrammer.fxtools.methods
 
+import com.thepyprogrammer.fxtools.point.Point
 import javafx.scene.input.*
 
 val MouseEvent.screenPoint: Point
